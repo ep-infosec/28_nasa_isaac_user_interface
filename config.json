@@ -1,0 +1,176 @@
+{
+	"telemetry": [
+		{
+			"name": "Astrobee /gnc/ekf position X",
+			"key": "ros.telemetry.ekf.pose.x",
+			"ros": {
+				"topic": "/gnc/ekf",
+				"type": "ff_msgs/EkfState",
+				"fieldName": "x",
+				"fieldPosition": "pose.position.x",
+				"fieldUnit": "meters"
+			}
+		},
+		{
+			"name": "Astrobee /gnc/ekf position Y",
+			"key": "ros.telemetry.ekf.pose.y",
+			"ros": {
+				"topic": "/gnc/ekf",
+				"type": "ff_msgs/EkfState",
+				"fieldName": "y",
+				"fieldPosition": "pose.position.y",
+				"fieldUnit": "meters"
+			}
+		},
+		{
+			"name": "Astrobee /gnc/ekf position Z",
+			"key": "ros.telemetry.ekf.pose.z",
+			"ros": {
+				"topic": "/gnc/ekf",
+				"type": "ff_msgs/EkfState",
+				"fieldName": "z",
+				"fieldPosition": "pose.position.z",
+				"fieldUnit": "meters"
+			}
+		}
+	],
+	"logs": [
+		{
+			"name": "ROS Logs (MAST only)",
+			"key": "ros.logs.rosout.mast",
+			"ros": {
+				"topic": "/rosout/mast"
+			}
+		},
+		{
+			"name": "ROS Logs (MLP only)",
+			"key": "ros.logs.rosout.mlp",
+			"ros": {
+				"topic": "/rosout/mlp"
+			}
+		},
+		{
+			"name": "ROS Logs (LLP only)",
+			"key": "ros.logs.rosout.llp",
+			"ros": {
+				"topic": "/rosout/llp"
+			}
+		},
+		{
+			"name": "ROS Logs",
+			"key": "ros.logs.rosout",
+			"ros": {
+				"topic": "/rosout"
+			}
+		}
+	],
+	"video": [
+		{
+			"name": "Astrobee Navcam",
+			"key": "ros.video.navcam",
+			"ros": {
+				"topic": "/hw/cam_nav"
+			}
+		},
+		{
+			"name": "Astrobee Dockcam",
+			"key": "ros.video.dockcam",
+			"ros": {
+				"topic": "/hw/cam_dock"
+			}
+		}
+	],
+	"plots": [
+		{
+			"name": "Astrobee /gnc/ekf position X, Y, Z",
+			"key": "telemetry.plot.ekf.position",
+			"series": [
+				"ros.telemetry.ekf.pose.x",
+				"ros.telemetry.ekf.pose.y",
+				"ros.telemetry.ekf.pose.z"
+			]
+		}
+	],
+	"service": [
+		{
+			"name": "Reset EKF",
+			"key": "ros.service.ekf.reset",
+			"ros": {
+				"name": "/gnc/ekf/reset",
+				"type": "std_srvs/Empty"
+			}
+		},
+		{
+			"name": "Configure Navcam",
+			"key": "ros.service.navcam.config",
+			"ros": {
+				"name": "/mgt/img_sampler/nav_cam/configure",
+				"type": "ff_msgs/ConfigureCamera",
+				"args": {
+					"mode": [
+						0,
+						1,
+						2
+					],
+					"rate": [
+						1,
+						5,
+						10
+					]
+				}
+			}
+		}
+	],
+	"schematic": [
+	],
+	"view": [
+		{
+			"name": "ISS CAD Model",
+			"key": "ros.view.iss",
+			"layer": "back",
+			"ros": {
+				"type": "urdf",
+				"param": "/iss/robot_description",
+				"tf": "iss"
+			}
+		},
+		{
+			"name": "World View",
+			"key": "ros.view",
+			"ros": {
+				"type": "camera",
+				"frame": "world",
+				"center": {
+					"x": 9.8,
+					"y": -9.8,
+					"z": 4.3
+				},
+				"position": {
+					"x": 17,
+					"y": -9.8,
+					"z": 4.1
+				}
+			}
+		},
+		{
+			"name": "Astrobee",
+			"key": "ros.view.astrobee",
+			"layer": "front",
+			"ros": {
+				"type": "urdf",
+				"param": "/robot_description",
+				"tf": ""
+			}
+		},
+		{
+			"name": "Astrobee Dock",
+			"key": "ros.view.astrobee.dock",
+			"layer": "front",
+			"ros": {
+				"type": "urdf",
+				"param": "/dock/robot_description",
+				"tf": "dock"
+			}
+		}
+	]
+}
